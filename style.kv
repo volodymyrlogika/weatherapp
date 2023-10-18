@@ -1,0 +1,73 @@
+<WeatherCard>:
+    padding: 15
+    size_hint: 0.8, 0.8
+    pos_hint: {"center_x": 0.5}
+    MDBoxLayout:
+        orientation: "vertical"
+        MDLabel:
+            id: date_text
+            text: ""
+            halign: "center"
+            font_style: "H6"
+        AsyncImage:
+            id: icon
+            fit_mode: "contain"
+            size_hint: (None, None)
+            height: '70sp'
+            width: '70sp'
+            pos_hint: {"center_x": 0.5}
+        MDLabel:
+            id: weather_text
+            text: "Погода"
+            halign: "center"
+            font_style: "H5"
+        MDLabel:
+            id: temp_text
+            text: ""
+            halign: "center"
+            font_style: "H4"
+        MDLabel:
+            id: rain_pop_text
+            text: ""
+            halign: "left"
+            font_style: 'Subtitle2'
+        MDLabel:
+            id: rain_text
+            text: ""
+            halign: "left"
+            font_style: 'Subtitle2'
+        MDLabel:
+            id: wind_speed_text
+            text: ""
+            halign: "left"
+            font_style: 'Subtitle2'
+
+
+<HomeScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20sp"
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: ["0sp", "20sp"]
+            size_hint: (1, 0.8)
+            MDTextField:
+                id: city
+                hint_text: "Введіть місто"
+                mode: "fill"
+                size_hint: (0.9, None)
+                pos_hint: {"center_x": 0.5}
+
+            MDCarousel:
+                id: weather_carousel
+                direction: 'right'
+                padding: 10
+
+        MDBottomAppBar:
+            MDTopAppBar:
+                title: "MyWeather"
+                icon: "map-marker-outline"
+                type: "bottom"
+                left_action_items: [["menu", lambda x: x]]
+                mode: "end"
+                on_action_button: root.city_request()
